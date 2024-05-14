@@ -68,7 +68,8 @@ function install_packages () {
 	virtualbox-guest-x11/noble \
 	virtualbox-guest-x11/noble \
 	virtualbox-source/noble \
-	xmount/noble
+	xmount/noble \
+	policykit-1-gnome
 }
 
 function configure_mariadb () {
