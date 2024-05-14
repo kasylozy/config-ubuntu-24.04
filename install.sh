@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -x
 set -e
 
 function updated_system () {
@@ -66,7 +65,8 @@ function install_packages () {
 	virtualbox-guest-x11/noble \
 	virtualbox-source/noble \
 	xmount/noble \
-	policykit-1-gnome
+	policykit-1-gnome \
+	pulsemixer
 }
 
 function configure_mariadb () {
