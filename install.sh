@@ -8,6 +8,8 @@ function updated_system () {
 	sudo apt full-upgrade -y
 }
 
+sudo dpkg --add-architecture i386
+
 function install_packages () {
 	sudo apt install -y \
 	wget \
@@ -50,11 +52,6 @@ function install_packages () {
 	nautilus \
 	fonts-font-awesome \
 	thunderbird \
-	wine \
-	wine-stable \
-	wine64 \
-	wine64-preloader \
-	wine64-tools \
 	mariadb-backup \
 	mariadb-client \
 	mariadb-common \
@@ -150,6 +147,16 @@ function disable_error_network () {
 	sudo systemctl mask systemd-networkd-wait-online.service
 }
 
+function configure_and_install_wine () {
+	sudo apt install -y \
+	wine \
+	wine-stable \
+	wine64 \
+	wine64-preloader \
+	wine64-tools
+	sudo ln -s /usr/share/doc/wine/examples/wine.desktop /usr/share/applications/
+}
+
 function configure_software () {
 	configure_mariadb
 	configure_zsh
@@ -162,8 +169,9 @@ function main () {
 	install_packages
 	configure_software
 	install_snap
-	updated_config
 	disable_error_network
+	configure_and_install_wine
+	updated_config
 }
 
 main
